@@ -7,14 +7,17 @@ import { Filter } from "./components/filter";
 import { Table } from "./components/table";
 import { AddButton } from "./components/buttons/add-button";
 import picture from "./assets/recipeImage.png";
-import { KITCHEN_RECIPES, LIST } from "./utils/constants";
+import { KITCHEN_RECIPES } from "./utils/constants";
 import "./App.css";
+import { useSelector } from "react-redux";
 
 function App() {
+  const recipes = useSelector((state) => state.recipe);
+  console.log(recipes);
   const columns = [
     { field: "name", header: "Recipe name" },
     { field: "reviews", header: "Reviews" },
-    { field: "coockedBefore", header: "Coocked before" },
+    { field: "cookedBefore", header: "Coocked before" },
   ];
   return (
     <div className="App">
@@ -34,7 +37,7 @@ function App() {
             <Search />
             <Filter />
           </div>
-          <Table columns={columns} data={LIST} />
+          <Table columns={columns} data={recipes} />
           <AddButton />
         </div>
       </div>

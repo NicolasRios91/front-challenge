@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const KITCHEN_RECIPES = "Kitchen Recipes";
 export const COOKED_BEFORE = "Cooked before";
 export const SEARCH_PLACEHOLDER = "Search";
@@ -14,9 +16,11 @@ export const FILTER_OPTIONS = [
 ];
 
 export const RECIPE = {
+  id: "1",
   name: "recipe test",
   reviews: 2,
-  coockedBefore: true,
+  ingredients: ["salt", "pepper", "meat"],
+  cookedBefore: true,
   preparation: "this is an example of preparation",
 };
 
