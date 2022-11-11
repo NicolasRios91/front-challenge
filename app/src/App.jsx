@@ -7,7 +7,12 @@ import { Filter } from "./components/filter";
 import { Table } from "./components/table";
 import { AddButton } from "./components/buttons/add-button";
 import picture from "./assets/recipeImage.png";
-import { KITCHEN_RECIPES } from "./utils/constants";
+import {
+  KITCHEN_RECIPES,
+  ACTIVE_VALUE,
+  ALL_VALUE,
+  INACTIVE_VALUE,
+} from "./utils/constants";
 import "./App.css";
 import { AddModal } from "./views/modals/add-recipe";
 import { useSelector } from "react-redux";
@@ -16,6 +21,7 @@ function App() {
   const data = useSelector((state) => state.recipe);
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState("");
+  const [status, setStatus] = useState(ALL_VALUE);
 
   const columns = [
     { field: "name", header: "Recipe name" },
@@ -29,13 +35,24 @@ function App() {
     }
   }, []);
 
+  //todo move to a custom hook if posible
   useEffect(() => {
-    let searchResults = data;
-    if (search !== "") {
-      searchResults = data.filter((recipe) => recipe.name.includes(search));
+    let filteredResults = data;
+    filteredResults =
+      search !== " " && data.filter((recipe) => recipe.name.includes(search));
+
+    if (status !== ALL_VALUE) {
+      filteredResults = filteredResults.filter((recipe) => {
+        if (status === ACTIVE_VALUE && recipe.cookedBefore) {
+          return recipe;
+        }
+        if (status === INACTIVE_VALUE && !recipe.cookedBefore) {
+          return recipe;
+        }
+      });
     }
-    setFilteredData(searchResults);
-  }, [search]);
+    setFilteredData(filteredResults);
+  }, [search, status]);
 
   return (
     <div className="App">
@@ -53,7 +70,7 @@ function App() {
           <Title text={KITCHEN_RECIPES} />
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Search callback={setSearch} />
-            <Filter />
+            <Filter callback={setStatus} />
           </div>
           <Table columns={columns} data={filteredData} />
           <AddButton />

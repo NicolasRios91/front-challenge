@@ -9,10 +9,14 @@ export const INGREDIENTS_LABEL = "Ingredients";
 export const PREPARATION_LABEL = "Preparation";
 export const EDIT_LABEL = "Edit";
 export const EDIT_RECIPE_LABEL = "Edit recipe";
+export const ALL_VALUE = "all";
+export const ACTIVE_VALUE = "active";
+export const INACTIVE_VALUE = "inactive";
+
 export const FILTER_OPTIONS = [
-  { value: "all", label: "All" },
-  { value: "active", label: "Active" },
-  { value: "inactive", label: "Inactive" },
+  { value: ALL_VALUE, label: "All" },
+  { value: ACTIVE_VALUE, label: "Active" },
+  { value: INACTIVE_VALUE, label: "Inactive" },
 ];
 
 export const RECIPES = [
@@ -37,7 +41,7 @@ export const RECIPES = [
     name: "recipe cccc",
     reviews: 2,
     ingredients: ["salt", "pepper", "meat"],
-    cookedBefore: true,
+    cookedBefore: false,
     preparation: "this is an example of preparation",
   },
   {
@@ -45,7 +49,7 @@ export const RECIPES = [
     name: "recipe aaa",
     reviews: 2,
     ingredients: ["salt", "pepper", "meat"],
-    cookedBefore: true,
+    cookedBefore: false,
     preparation: "this is an example of preparation",
   },
 ];

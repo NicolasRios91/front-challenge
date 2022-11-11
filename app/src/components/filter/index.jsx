@@ -4,7 +4,7 @@ import { COOKED_BEFORE, FILTER_OPTIONS } from "../../utils/constants";
 import useOutsideClick from "../../utils/helpers/use-outside-click";
 
 //todo add reducer
-export const Filter = () => {
+export const Filter = ({ callback }) => {
   const [selectedOption, setSelectedOption] = useState(FILTER_OPTIONS[0].label);
   const [isOpen, setIsopen] = useState(false);
   const ref = useRef();
@@ -15,6 +15,7 @@ export const Filter = () => {
     );
     if (newValue) {
       setSelectedOption(newValue.label);
+      callback(newValue.value);
     }
   };
 

@@ -40,6 +40,7 @@ export const DropDownContainer = styled.div`
   position: relative;
 
   > div {
+    background: white;
     display: flex;
     flex-direction: column;
     position: absolute;

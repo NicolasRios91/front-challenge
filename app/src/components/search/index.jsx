@@ -5,7 +5,7 @@ import { SEARCH_PLACEHOLDER } from "../../utils/constants";
 export const Search = ({ callback }) => {
   //todo add debounce
   const handleOnChange = (e) => {
-    callback(e.target.value);
+    callback(e.target.value.trim());
   };
 
   return (
