@@ -15,13 +15,37 @@ export const FILTER_OPTIONS = [
   { value: "inactive", label: "Inactive" },
 ];
 
-export const RECIPE = {
-  id: "1",
-  name: "recipe test",
-  reviews: 2,
-  ingredients: ["salt", "pepper", "meat"],
-  cookedBefore: true,
-  preparation: "this is an example of preparation",
-};
-
-export const LIST = Array(20).fill(RECIPE);
+export const RECIPES = [
+  {
+    id: "1",
+    name: "recipe aaaa",
+    reviews: 2,
+    ingredients: ["salt", "pepper", "meat"],
+    cookedBefore: true,
+    preparation: "this is an example of preparation",
+  },
+  {
+    id: "2",
+    name: "recipe bbbb",
+    reviews: 2,
+    ingredients: ["salt", "pepper", "meat"],
+    cookedBefore: true,
+    preparation: "this is an example of preparation",
+  },
+  {
+    id: "3",
+    name: "recipe cccc",
+    reviews: 2,
+    ingredients: ["salt", "pepper", "meat"],
+    cookedBefore: true,
+    preparation: "this is an example of preparation",
+  },
+  {
+    id: "4",
+    name: "recipe aaa",
+    reviews: 2,
+    ingredients: ["salt", "pepper", "meat"],
+    cookedBefore: true,
+    preparation: "this is an example of preparation",
+  },
+];
