@@ -87,12 +87,11 @@ export const AddModal = () => {
           style={{
             display: "flex",
             width: "60%",
-            justifyContent: "space-evenly",
+            justifyContent: "space-between",
           }}
         >
           {reviewOptions.map((option) => (
             <div>
-              <label>{option}</label>
               <input
                 type="radio"
                 name="review-group"
@@ -101,6 +100,7 @@ export const AddModal = () => {
                 checked={option == reviews}
                 onChange={(event) => handleChange(event, setReviews)}
               ></input>
+              <label>{option}</label>
             </div>
           ))}
         </div>
