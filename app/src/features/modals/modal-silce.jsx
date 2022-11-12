@@ -12,8 +12,12 @@ export const modalSlidersSlice = createSlice({
     openModal: (state, action) => {
       state.open.push(action.payload);
     },
+    closeAllModals: (state) => {
+      state.open = [];
+    },
   },
 });
 
-export const { closeModal, openModal } = modalSlidersSlice.actions;
+export const { closeModal, openModal, closeAllModals } =
+  modalSlidersSlice.actions;
 export default modalSlidersSlice.reducer;

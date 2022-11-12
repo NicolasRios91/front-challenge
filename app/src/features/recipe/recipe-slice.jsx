@@ -3,15 +3,15 @@ import { RECIPES } from "../../utils/constants";
 
 export const recipeSlice = createSlice({
   name: "recipes",
-  initialState: RECIPES,
+  initialState: { data: RECIPES, selectedRecipeId: null },
   reducers: {
     addRecipe: (state, action) => {
-      state.push(action.payload);
+      state.data.push(action.payload);
     },
     editRecipe: (state, action) => {
       const { id, preparation, name, reviews, ingredients, cookedBefore } =
         action.payload;
-      const foundRecipe = state.find((recipe) => recipe.id === id);
+      const foundRecipe = state.data.find((recipe) => recipe.id === id);
       if (foundRecipe) {
         foundRecipe.preparation = preparation;
         foundRecipe.name = name;
@@ -20,8 +20,11 @@ export const recipeSlice = createSlice({
         foundRecipe.cookedBefore = cookedBefore;
       }
     },
+    setSelectedRecipe: (state, action) => {
+      state.selectedRecipeId = action.payload;
+    },
   },
 });
 
-export const { addRecipe, editRecipe } = recipeSlice.actions;
+export const { addRecipe, editRecipe, setSelectedRecipe } = recipeSlice.actions;
 export default recipeSlice.reducer;

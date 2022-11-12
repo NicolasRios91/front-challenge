@@ -15,16 +15,25 @@ import {
 } from "./utils/constants";
 import "./App.css";
 import { AddModal } from "./views/modals/add-recipe";
-import { useSelector } from "react-redux";
+import { ShowRecipeSlide } from "./views/modals/show-recipe";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  const data = useSelector((state) => state.recipe);
+  const data = useSelector((state) => state.recipe.data);
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState(ALL_VALUE);
 
+  const dispatch = useDispatch();
+
   const columns = [
-    { field: "name", header: "Recipe name" },
+    {
+      field: "name",
+      header: "Recipe name",
+      // cellRendererFramework: (params) => (
+      //   <CustomNameCell row={params} callback={dispatch} />
+      // ),
+    },
     { field: "reviews", header: "Reviews" },
     { field: "cookedBefore", header: "Coocked before" },
   ];
@@ -72,11 +81,12 @@ function App() {
             <Search callback={setSearch} />
             <Filter callback={setStatus} />
           </div>
-          <Table columns={columns} data={filteredData} />
+          <Table columns={columns} data={filteredData} callback={dispatch} />
           <AddButton />
         </div>
       </div>
       <AddModal />
+      <ShowRecipeSlide />
     </div>
   );
 }
