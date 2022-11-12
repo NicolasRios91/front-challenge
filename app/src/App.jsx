@@ -61,7 +61,7 @@ function App() {
       });
     }
     setFilteredData(filteredResults);
-  }, [search, status]);
+  }, [search, status, data]);
 
   return (
     <div className="App">
