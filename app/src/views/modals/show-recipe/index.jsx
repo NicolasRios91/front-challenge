@@ -5,6 +5,7 @@ import {
   ModalContainer,
   Container,
   SlideActionButton,
+  FooterContainer,
 } from "../../../components/common/styles";
 import { SlideHeader } from "../../../components/slide-header";
 import { closeModal, openModal } from "../../../features/modals/modal-silce";
@@ -98,9 +99,9 @@ export const ShowRecipeSlide = () => {
         </div>
         <p>{COOKED_BEFORE}</p>
         <ToogleEditSlide row={recipe} callback={dispatch} />
-        <div>
+        <FooterContainer>
           <SlideActionButton onClick={handleEditButton}>Edit</SlideActionButton>
-        </div>
+        </FooterContainer>
       </Container>
     </ModalContainer>
   );

@@ -12,7 +12,6 @@ export const AddButton = () => {
   return (
     <StyledButton onClick={handleOnClick}>
       <PlusSign />
-      <PlusSign />
     </StyledButton>
   );
 };

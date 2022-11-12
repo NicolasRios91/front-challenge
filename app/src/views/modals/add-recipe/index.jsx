@@ -5,6 +5,7 @@ import {
   Container,
   StyledTextArea,
   SlideActionButton,
+  FooterContainer,
 } from "../../../components/common/styles";
 import { SlideHeader } from "../../../components/slide-header";
 import {
@@ -160,21 +161,26 @@ export const AddModal = () => {
         </div>
         <p>{COOKED_BEFORE}</p>
         <ToggleAddSlide value={cookedBefore} callback={setCookedBefore} />
-        {isEditModal ? (
-          <>
-            {" "}
-            <SlideActionButton secondary onClick={handleCancel}>
-              Cancel
+        <FooterContainer>
+          {isEditModal ? (
+            <>
+              {" "}
+              <SlideActionButton secondary onClick={handleCancel}>
+                Cancel
+              </SlideActionButton>
+              <SlideActionButton onClick={handleCreateRecipe}>
+                Update
+              </SlideActionButton>
+            </>
+          ) : (
+            <SlideActionButton
+              onClick={handleCreateRecipe}
+              disabled={isDisabled}
+            >
+              Create
             </SlideActionButton>
-            <SlideActionButton onClick={handleCreateRecipe}>
-              Update
-            </SlideActionButton>
-          </>
-        ) : (
-          <SlideActionButton onClick={handleCreateRecipe} disabled={isDisabled}>
-            Create
-          </SlideActionButton>
-        )}
+          )}
+        </FooterContainer>
       </Container>
     </ModalContainer>
   );

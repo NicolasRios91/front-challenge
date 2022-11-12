@@ -68,3 +68,9 @@ export const SlideActionButton = styled.button`
     border: none;
   }
 `;
+
+export const FooterContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: ${(props) => props.theme.space.xl};
+`;
