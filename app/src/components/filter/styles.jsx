@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSelect = styled.div`
-  width: 200px;
+  min-width: 200px;
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;

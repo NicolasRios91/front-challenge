@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { StatusButton } from "../../../components/buttons/status-button";
 import {
   ModalContainer,
   Container,
@@ -14,10 +13,7 @@ import {
   EDIT_RECIPE_MODAL,
   COOKED_BEFORE,
 } from "../../../utils/constants";
-import {
-  ToggleAddSlide,
-  ToogleEditSlide,
-} from "../../../components/buttons/toggle";
+import { ToogleEditSlide } from "../../../components/buttons/toggle";
 
 export const ShowRecipeSlide = () => {
   const dispatch = useDispatch();
@@ -64,8 +60,6 @@ export const ShowRecipeSlide = () => {
   if (!openModals.includes(SHOW_RECIPE_MODAL)) {
     return null;
   }
-
-  console.log("rec", recipe);
 
   return (
     <ModalContainer>

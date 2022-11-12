@@ -1,3 +1,4 @@
+import "@fontsource/poppins";
 const theme = {
   color: {
     dark: "#000000",

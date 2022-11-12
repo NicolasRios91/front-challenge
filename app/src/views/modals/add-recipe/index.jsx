@@ -6,6 +6,7 @@ import {
   StyledTextArea,
   SlideActionButton,
   FooterContainer,
+  StyledSubtitle,
 } from "../../../components/common/styles";
 import { SlideHeader } from "../../../components/slide-header";
 import {
@@ -28,11 +29,7 @@ import {
   SHOW_RECIPE_MODAL,
 } from "../../../utils/constants";
 import { v4 as uuid } from "uuid";
-import { StatusButton } from "../../../components/buttons/status-button";
-import {
-  ToggleAddSlide,
-  ToogleEditSlide,
-} from "../../../components/buttons/toggle";
+import { ToggleAddSlide } from "../../../components/buttons/toggle";
 
 export const AddModal = () => {
   const [ingredients, setIngredients] = useState("");
@@ -120,24 +117,24 @@ export const AddModal = () => {
           title={isEditModal ? EDIT_RECIPE_LABEL : NEW_RECIPE}
           callback={clearFields}
         />
-        <p>{RECIPE_NAME_LABEL}</p>
+        <StyledSubtitle>{RECIPE_NAME_LABEL}</StyledSubtitle>
         <StyledTextArea
           small
           onChange={(event) => handleChange(event, setName)}
           value={name}
         />
-        <p>Ingredients</p>
+        <StyledSubtitle>Ingredients</StyledSubtitle>
         <input
           type="text"
           onChange={(event) => handleChange(event, setIngredients)}
           value={ingredients}
         ></input>
-        <p>Preparation</p>
+        <StyledSubtitle>Preparation</StyledSubtitle>
         <StyledTextArea
           onChange={(event) => handleChange(event, setPreparation)}
           value={preparation}
         />
-        <p>Reviews</p>
+        <StyledSubtitle>Reviews</StyledSubtitle>
         <div
           style={{
             display: "flex",
@@ -159,7 +156,7 @@ export const AddModal = () => {
             </div>
           ))}
         </div>
-        <p>{COOKED_BEFORE}</p>
+        <StyledSubtitle>{COOKED_BEFORE}</StyledSubtitle>
         <ToggleAddSlide value={cookedBefore} callback={setCookedBefore} />
         <FooterContainer>
           {isEditModal ? (
