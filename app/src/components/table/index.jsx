@@ -1,8 +1,7 @@
 import { StyledTable, Container } from "./styles";
 import { CustomNameCell } from "../custom-cells/recipe-name";
-import { StatusButton } from "../buttons/status-button";
-import { useEffect } from "react";
 import { ToogleEditSlide } from "../buttons/toggle";
+import { CustomReviewCell } from "../custom-cells/review";
 
 export const Table = ({ data, columns, callback }) => {
   return (
@@ -23,7 +22,11 @@ export const Table = ({ data, columns, callback }) => {
                     return <CustomNameCell callback={callback} row={row} />;
                   }
                   if (col.field == "reviews") {
-                    return <td>{row.reviews}</td>;
+                    return (
+                      <td>
+                        <CustomReviewCell row={row} />
+                      </td>
+                    );
                   }
 
                   if (col.field == "cookedBefore") {

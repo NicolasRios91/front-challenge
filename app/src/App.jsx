@@ -14,7 +14,7 @@ import {
   INACTIVE_VALUE,
 } from "./utils/constants";
 import "./App.css";
-import { AddModal } from "./views/modals/add-recipe";
+import { AddRecipeSlide } from "./views/modals/add-recipe";
 import { ShowRecipeSlide } from "./views/modals/show-recipe";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -85,7 +85,7 @@ function App() {
           <AddButton />
         </div>
       </div>
-      <AddModal />
+      <AddRecipeSlide />
       <ShowRecipeSlide />
     </div>
   );

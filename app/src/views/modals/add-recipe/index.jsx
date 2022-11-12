@@ -31,7 +31,7 @@ import {
 import { v4 as uuid } from "uuid";
 import { ToggleAddSlide } from "../../../components/buttons/toggle";
 
-export const AddModal = () => {
+export const AddRecipeSlide = () => {
   const [ingredients, setIngredients] = useState("");
   const [preparation, setPreparation] = useState([]);
   const [name, setName] = useState("");
@@ -87,7 +87,7 @@ export const AddModal = () => {
     [ingredients, preparation, name]
   );
 
-  const reviewOptions = [1, 2, 3, 4];
+  const reviewOptions = [1, 2, 3, 4, 5];
 
   useEffect(() => {
     if (isEditModal) {

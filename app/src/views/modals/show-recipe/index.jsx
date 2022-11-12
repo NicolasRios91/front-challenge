@@ -14,6 +14,7 @@ import {
   COOKED_BEFORE,
 } from "../../../utils/constants";
 import { ToogleEditSlide } from "../../../components/buttons/toggle";
+import { CustomReviewCell } from "../../../components/custom-cells/review";
 
 export const ShowRecipeSlide = () => {
   const dispatch = useDispatch();
@@ -45,8 +46,6 @@ export const ShowRecipeSlide = () => {
     dispatch(closeModal(SHOW_RECIPE_MODAL));
   };
 
-  const reviewOptions = [1, 2, 3, 4];
-
   useEffect(() => {
     if (recipe) {
       setIngredients(recipe.ingredients);
@@ -75,21 +74,9 @@ export const ShowRecipeSlide = () => {
           style={{
             display: "flex",
             width: "60%",
-            justifyContent: "space-between",
           }}
         >
-          {reviewOptions.map((option) => (
-            <div>
-              <input
-                type="radio"
-                name="review-group"
-                key={option}
-                value={option}
-                checked={option == reviews}
-              ></input>
-              <label>{option}</label>
-            </div>
-          ))}
+          <CustomReviewCell row={recipe}></CustomReviewCell>
         </div>
         <p>{COOKED_BEFORE}</p>
         <ToogleEditSlide row={recipe} callback={dispatch} />
