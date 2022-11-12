@@ -33,7 +33,7 @@ function App() {
     if (data) {
       setFilteredData(data);
     }
-  }, []);
+  }, [data]);
 
   //todo move to a custom hook if posible
   useEffect(() => {
@@ -76,7 +76,7 @@ function App() {
           <AddButton />
         </div>
       </div>
-      {/* <AddModal /> */}
+      <AddModal />
     </div>
   );
 }

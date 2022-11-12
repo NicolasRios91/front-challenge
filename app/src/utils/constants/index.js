@@ -12,6 +12,8 @@ export const EDIT_RECIPE_LABEL = "Edit recipe";
 export const ALL_VALUE = "all";
 export const ACTIVE_VALUE = "active";
 export const INACTIVE_VALUE = "inactive";
+export const NEW_RECIPE = "New recipe";
+export const ADD_RECIPE_MODAL = "ADD_RECIPE";
 
 export const FILTER_OPTIONS = [
   { value: ALL_VALUE, label: "All" },
@@ -39,7 +41,7 @@ export const RECIPES = [
   {
     id: "3",
     name: "recipe cccc",
-    reviews: 2,
+    reviews: 4,
     ingredients: ["salt", "pepper", "meat"],
     cookedBefore: false,
     preparation: "this is an example of preparation",
@@ -47,7 +49,7 @@ export const RECIPES = [
   {
     id: "4",
     name: "recipe aaa",
-    reviews: 2,
+    reviews: 4,
     ingredients: ["salt", "pepper", "meat"],
     cookedBefore: false,
     preparation: "this is an example of preparation",

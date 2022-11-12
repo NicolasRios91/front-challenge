@@ -1,26 +1,13 @@
 import { useDispatch } from "react-redux";
 import { StyledButton } from "./styles";
-import { addRecipe, editRecipe } from "../../../features/recipe/recipe-slice";
+import { openModal } from "../../../features/modals/modal-silce";
+import { ADD_RECIPE_MODAL } from "../../../utils/constants";
 
 export const AddButton = () => {
   const dispatch = useDispatch();
   const handleOnClick = () => {
-    dispatch(
-      addRecipe({ name: "redux test", preparation: "test redux preparation" })
-    );
+    dispatch(openModal(ADD_RECIPE_MODAL));
   };
 
-  const handleEdit = () => {
-    dispatch(
-      editRecipe({
-        id: "1",
-        name: "edited asd",
-        preparation: "edited preparation",
-        review: 4,
-        cookedBefore: false,
-      })
-    );
-  };
-
-  return <StyledButton onClick={handleEdit}>+</StyledButton>;
+  return <StyledButton onClick={handleOnClick}>+</StyledButton>;
 };
