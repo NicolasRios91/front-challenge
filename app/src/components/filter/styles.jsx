@@ -38,6 +38,7 @@ export const Arrow = styled.div`
 
 export const DropDownContainer = styled.div`
   position: relative;
+  z-index: 5;
 
   > div {
     background: white;
