@@ -4,6 +4,7 @@ import {
   ModalContainer,
   Container,
   StyledTextArea,
+  SlideActionButton,
 } from "../../../components/common/styles";
 import { SlideHeader } from "../../../components/slide-header";
 import {
@@ -26,6 +27,11 @@ import {
   SHOW_RECIPE_MODAL,
 } from "../../../utils/constants";
 import { v4 as uuid } from "uuid";
+import { StatusButton } from "../../../components/buttons/status-button";
+import {
+  ToggleAddSlide,
+  ToogleEditSlide,
+} from "../../../components/buttons/toggle";
 
 export const AddModal = () => {
   const [ingredients, setIngredients] = useState("");
@@ -67,7 +73,7 @@ export const AddModal = () => {
     };
 
     recipeId
-      ? dispatch(editRecipe(newRecipe))
+      ? dispatch(editRecipe({ id: recipeId, ...newRecipe }))
       : dispatch(addRecipe({ id: uuid(), ...newRecipe }));
     //todo add modal for success
     dispatch(closeAllModals());
@@ -125,8 +131,6 @@ export const AddModal = () => {
           onChange={(event) => handleChange(event, setIngredients)}
           value={ingredients}
         ></input>
-
-        <button>+</button>
         <p>Preparation</p>
         <StyledTextArea
           onChange={(event) => handleChange(event, setPreparation)}
@@ -155,19 +159,21 @@ export const AddModal = () => {
           ))}
         </div>
         <p>{COOKED_BEFORE}</p>
-        <button onClick={() => setCookedBefore(!cookedBefore)}>
-          {cookedBefore ? "YES" : "NO"}
-        </button>
+        <ToggleAddSlide value={cookedBefore} callback={setCookedBefore} />
         {isEditModal ? (
           <>
             {" "}
-            <button onClick={handleCancel}>Cancel</button>
-            <button onClick={handleCreateRecipe}>Update</button>
+            <SlideActionButton secondary onClick={handleCancel}>
+              Cancel
+            </SlideActionButton>
+            <SlideActionButton onClick={handleCreateRecipe}>
+              Update
+            </SlideActionButton>
           </>
         ) : (
-          <button onClick={handleCreateRecipe} disabled={isDisabled}>
+          <SlideActionButton onClick={handleCreateRecipe} disabled={isDisabled}>
             Create
-          </button>
+          </SlideActionButton>
         )}
       </Container>
     </ModalContainer>

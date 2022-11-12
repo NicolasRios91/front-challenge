@@ -18,12 +18,53 @@ export const Container = styled.div`
   height: 100%;
   right: 0;
   background-color: white;
+
+  p {
+    font-weight: ${(props) => props.theme.weight[600]};
+    margin-bottom: ${(props) => props.theme.space.m};
+  }
+
+  textarea,
+  input {
+    box-sizing: border-box;
+    border: 1px solid ${(props) => props.theme.color.lightBlue};
+    border-radius: 4px;
+    padding: ${(props) => props.theme.space.xs};
+    :focus {
+      outline: none;
+    }
+  }
 `;
 
 export const StyledTextArea = styled.textarea`
   width: 100%;
   display: block;
+  box-sizing: border-box;
   margin: auto;
   resize: none;
   height: ${(props) => (props.small ? "54px" : "172px")};
+  padding: ${(props) => props.theme.space.xs};
+`;
+
+export const SlideActionButton = styled.button`
+  width: 120px;
+  height: 48px;
+  border-radius: 25px;
+  border: ${(props) =>
+    props.secondary ? `2px solid ${props.theme.color.darkGreen}` : "none"};
+  background: ${(props) =>
+    props.secondary ? "#ffffff" : `${props.theme.color.darkGreen}`};
+  color: ${(props) =>
+    props.secondary ? `${props.theme.color.darkGreen}` : "#ffffff"};
+  margin-right: ${(props) => props.theme.space.l};
+
+  :hover {
+    cursor: pointer;
+  }
+
+  :disabled {
+    background: #b2b2b3;
+    color: #ffffff;
+    border: none;
+  }
 `;

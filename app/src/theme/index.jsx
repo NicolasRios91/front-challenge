@@ -8,6 +8,7 @@ const theme = {
       800: "#79797A",
     },
     darkGreen: "#0C969D",
+    lightBlue: "#54B5BA",
   },
   size: {
     xs: "12px",

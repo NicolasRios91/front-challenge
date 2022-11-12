@@ -1,10 +1,8 @@
 import { StyledTable, Container } from "./styles";
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-alpine.css";
-
-import { AgGridReact } from "ag-grid-react";
 import { CustomNameCell } from "../custom-cells/recipe-name";
 import { StatusButton } from "../buttons/status-button";
+import { useEffect } from "react";
+import { ToogleEditSlide } from "../buttons/toggle";
 
 export const Table = ({ data, columns, callback }) => {
   return (
@@ -29,7 +27,11 @@ export const Table = ({ data, columns, callback }) => {
                   }
 
                   if (col.field == "cookedBefore") {
-                    return <StatusButton callback={callback} row={row} />;
+                    return (
+                      <td>
+                        <ToogleEditSlide callback={callback} row={row} />
+                      </td>
+                    );
                   }
 
                   return <td>{row[col.field]}</td>;

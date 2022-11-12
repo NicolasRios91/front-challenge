@@ -1,17 +1,30 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { editRecipe } from "../../../features/recipe/recipe-slice";
 import { StyledButton } from "./styles";
 
 export const StatusButton = ({ row, callback }) => {
-  const [isActive, setIsActive] = useState(true);
+  const { id, reviews, ingredients, cookedBefore, preparation, name } = row;
+
+  const isActive = useMemo(() => cookedBefore, [row]);
+
   const handleClick = () => {
-    //todo dispatch edit here
-    setIsActive(!isActive);
+    const status = !isActive;
+    callback(
+      editRecipe({
+        id,
+        reviews,
+        ingredients,
+        cookedBefore: status,
+        preparation,
+        name,
+      })
+    );
   };
 
   return (
     <td>
       <StyledButton isActive={isActive} onClick={handleClick}>
-        {row.cookedBefore ? "YES" : "NO"}
+        {isActive ? "YES" : "NO"}
       </StyledButton>
     </td>
   );

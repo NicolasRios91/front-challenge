@@ -1,20 +1,22 @@
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { StatusButton } from "../../../components/buttons/status-button";
 import {
   ModalContainer,
   Container,
-  StyledTextArea,
+  SlideActionButton,
 } from "../../../components/common/styles";
 import { SlideHeader } from "../../../components/slide-header";
 import { closeModal, openModal } from "../../../features/modals/modal-silce";
-import { addRecipe } from "../../../features/recipe/recipe-slice";
 import {
   SHOW_RECIPE_MODAL,
-  NEW_RECIPE,
-  RECIPE_NAME_LABEL,
   EDIT_RECIPE_MODAL,
   COOKED_BEFORE,
 } from "../../../utils/constants";
+import {
+  ToggleAddSlide,
+  ToogleEditSlide,
+} from "../../../components/buttons/toggle";
 
 export const ShowRecipeSlide = () => {
   const dispatch = useDispatch();
@@ -62,6 +64,8 @@ export const ShowRecipeSlide = () => {
     return null;
   }
 
+  console.log("rec", recipe);
+
   return (
     <ModalContainer>
       <Container>
@@ -93,11 +97,9 @@ export const ShowRecipeSlide = () => {
           ))}
         </div>
         <p>{COOKED_BEFORE}</p>
-        <button onClick={() => setCookedBefore(!cookedBefore)}>
-          {cookedBefore ? "YES" : "NO"}
-        </button>
+        <ToogleEditSlide row={recipe} callback={dispatch} />
         <div>
-          <button onClick={handleEditButton}>Edit</button>
+          <SlideActionButton onClick={handleEditButton}>Edit</SlideActionButton>
         </div>
       </Container>
     </ModalContainer>
