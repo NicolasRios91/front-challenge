@@ -66,7 +66,7 @@ export const ShowRecipeSlide = () => {
       <Container>
         <SlideHeader title={name} />
         <p>Ingredients</p>
-        {ingredients.length > 1 &&
+        {ingredients.length > 0 &&
           ingredients?.map((element) => <li>{element}</li>)}
         <p>Preparation</p>
         <p style={{ fontWeight: "400", fontSize: "14px" }}>{preparation}</p>
