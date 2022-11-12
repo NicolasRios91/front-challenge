@@ -69,7 +69,7 @@ export const ShowRecipeSlide = () => {
         {ingredients.length > 1 &&
           ingredients?.map((element) => <li>{element}</li>)}
         <p>Preparation</p>
-        <p>{preparation}</p>
+        <p style={{ fontWeight: "400", fontSize: "14px" }}>{preparation}</p>
         <p>Reviews</p>
         <div
           style={{

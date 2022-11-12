@@ -57,6 +57,8 @@ export const SlideActionButton = styled.button`
   color: ${(props) =>
     props.secondary ? `${props.theme.color.darkGreen}` : "#ffffff"};
   margin-right: ${(props) => props.theme.space.l};
+  font-size: ${(props) => props.theme.size.m};
+  font-weight: ${(props) => props.theme.weight[600]};
 
   :hover {
     cursor: pointer;
