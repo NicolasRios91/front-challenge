@@ -25,7 +25,6 @@ and open localhost on default port: 5173 on your local computer
 
 ```
 http://localhost:5173/
-
 ```
 
 ## features
@@ -44,4 +43,4 @@ With this app client will be able to:
 - Improve adding more than one ingredient when adding recipe
 - Add a modal to confirm operations (was not mandatory but It is a nice to have)
 
-Thanks you!
+Thank you!
