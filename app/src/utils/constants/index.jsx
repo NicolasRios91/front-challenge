@@ -13,6 +13,9 @@ export const ALL_VALUE = "all";
 export const ACTIVE_VALUE = "active";
 export const INACTIVE_VALUE = "inactive";
 export const NEW_RECIPE = "New recipe";
+export const TYPE_TITLE = "Type title";
+export const TYPE_INGREDIENT = "Type Ingredient";
+export const TYPE_STEPS = "Write the steps...";
 
 export const ADD_RECIPE_MODAL = "ADD_RECIPE";
 export const SHOW_RECIPE_MODAL = "SHOW_RECIPE";

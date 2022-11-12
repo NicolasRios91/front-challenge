@@ -27,6 +27,12 @@ import {
   COOKED_BEFORE,
   EDIT_RECIPE_MODAL,
   SHOW_RECIPE_MODAL,
+  TYPE_TITLE,
+  TYPE_INGREDIENT,
+  TYPE_STEPS,
+  INGREDIENTS_LABEL,
+  PREPARATION_LABEL,
+  REVIEWS_LABEL,
 } from "../../../utils/constants";
 import { v4 as uuid } from "uuid";
 import { ToggleAddSlide } from "../../../components/buttons/toggle";
@@ -122,19 +128,22 @@ export const AddRecipeSlide = () => {
           small
           onChange={(event) => handleChange(event, setName)}
           value={name}
+          placeholder={TYPE_TITLE}
         />
-        <StyledSubtitle>Ingredients</StyledSubtitle>
+        <StyledSubtitle>{INGREDIENTS_LABEL}</StyledSubtitle>
         <input
           type="text"
           onChange={(event) => handleChange(event, setIngredients)}
           value={ingredients}
+          placeholder={TYPE_INGREDIENT}
         ></input>
-        <StyledSubtitle>Preparation</StyledSubtitle>
+        <StyledSubtitle>{PREPARATION_LABEL}</StyledSubtitle>
         <StyledTextArea
           onChange={(event) => handleChange(event, setPreparation)}
           value={preparation}
+          placeholder={TYPE_STEPS}
         />
-        <StyledSubtitle>Reviews</StyledSubtitle>
+        <StyledSubtitle>{REVIEWS_LABEL}</StyledSubtitle>
         <div
           style={{
             display: "flex",
@@ -165,7 +174,10 @@ export const AddRecipeSlide = () => {
               <SlideActionButton secondary onClick={handleCancel}>
                 Cancel
               </SlideActionButton>
-              <SlideActionButton onClick={handleCreateRecipe}>
+              <SlideActionButton
+                disabled={isDisabled}
+                onClick={handleCreateRecipe}
+              >
                 Update
               </SlideActionButton>
             </>
