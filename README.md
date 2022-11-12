@@ -27,6 +27,9 @@ and open localhost on default port: 5173 on your local computer
 http://localhost:5173/
 ```
 
+In addition, feel free to test It here without any installation:
+[Challenge deploy page](https://front-end-tinkin-challenge.netlify.app/)
+
 ## features
 
 With this app client will be able to:
