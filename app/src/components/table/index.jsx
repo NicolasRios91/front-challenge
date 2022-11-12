@@ -11,7 +11,10 @@ export const Table = ({ data, columns, callback }) => {
     <Container>
       <StyledTable>
         <thead>
-          <tr>{columns && columns.map((col) => <th>{col.header}</th>)}</tr>
+          <tr>
+            {columns &&
+              columns.map((col) => <th key={col.field}>{col.header}</th>)}
+          </tr>
         </thead>
         <tbody>
           {data &&
@@ -22,7 +25,7 @@ export const Table = ({ data, columns, callback }) => {
                     return <CustomNameCell callback={callback} row={row} />;
                   }
                   if (col.field == "reviews") {
-                    return <td>{}</td>;
+                    return <td>{row.reviews}</td>;
                   }
 
                   if (col.field == "cookedBefore") {
@@ -36,16 +39,5 @@ export const Table = ({ data, columns, callback }) => {
         </tbody>
       </StyledTable>
     </Container>
-    // <div
-    //   className="ag-theme-alpine"
-    //   style={{
-    //     height: "60vh",
-    //     width: "100%",
-    //     marginTop: "20px",
-    //     border: "none",
-    //   }}
-    // >
-    //   <StyledTable rowData={data} columnDefs={columns}></StyledTable>
-    // </div>
   );
 };

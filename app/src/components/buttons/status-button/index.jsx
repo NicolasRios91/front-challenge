@@ -9,8 +9,10 @@ export const StatusButton = ({ row, callback }) => {
   };
 
   return (
-    <StyledButton isActive={isActive} onClick={handleClick}>
-      {row.cookedBefore ? "YES" : "NO"}
-    </StyledButton>
+    <td>
+      <StyledButton isActive={isActive} onClick={handleClick}>
+        {row.cookedBefore ? "YES" : "NO"}
+      </StyledButton>
+    </td>
   );
 };
