@@ -6,7 +6,7 @@ import useOutsideClick from "../../utils/helpers/use-outside-click";
 //todo add reducer
 export const Filter = ({ callback }) => {
   const [selectedOption, setSelectedOption] = useState(FILTER_OPTIONS[0].label);
-  const [isOpen, setIsopen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const ref = useRef();
 
   const handleOnChange = (e) => {
@@ -20,11 +20,11 @@ export const Filter = ({ callback }) => {
   };
 
   const handleOpenModal = () => {
-    setIsopen(!isOpen);
+    setIsOpen(!isOpen);
   };
 
   useOutsideClick(ref, () => {
-    setIsopen(false);
+    setIsOpen(false);
   });
 
   return (

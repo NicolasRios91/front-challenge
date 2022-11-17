@@ -151,8 +151,8 @@ export const AddRecipeSlide = () => {
             justifyContent: "space-between",
           }}
         >
-          {reviewOptions.map((option) => (
-            <div>
+          {reviewOptions.map((option, index) => (
+            <div key={index}>
               <input
                 type="radio"
                 name="review-group"

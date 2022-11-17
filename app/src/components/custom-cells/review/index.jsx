@@ -11,14 +11,14 @@ export const CustomReviewCell = ({ row }) => {
   );
   return (
     <>
-      {stars?.map((e) => (
-        <span>
+      {stars?.map((e, index) => (
+        <span key={index}>
           <img src={star} />
         </span>
       ))}
 
-      {darkStars?.map((e) => (
-        <span>
+      {darkStars?.map((e, index) => (
+        <span key={index}>
           <img src={darkStar} />
         </span>
       ))}

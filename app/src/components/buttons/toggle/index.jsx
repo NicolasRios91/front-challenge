@@ -1,6 +1,7 @@
 import "./ToggleSwitch.css";
 import { useMemo } from "react";
 import { editRecipe } from "../../../features/recipe/recipe-slice";
+import { useDispatch } from "react-redux";
 
 export const ToggleSwitch = ({ value, callback }) => {
   return (
@@ -21,13 +22,15 @@ export const ToggleAddSlide = ({ value, callback }) => {
 };
 
 //for editing field on table and show slide
-export const ToogleEditSlide = ({ row, callback }) => {
+export const ToggleEditSlide = ({ row }) => {
   const { id, reviews, ingredients, cookedBefore, preparation, name } = row;
 
+  const dispatch = useDispatch();
   const isActive = useMemo(() => cookedBefore, [row]);
+
   const handleOnChange = () => {
     const status = !isActive;
-    callback(
+    dispatch(
       editRecipe({
         id,
         reviews,

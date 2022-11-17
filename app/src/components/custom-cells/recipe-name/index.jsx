@@ -2,11 +2,13 @@ import { setSelectedRecipe } from "../../../features/recipe/recipe-slice";
 import { SHOW_RECIPE_MODAL } from "../../../utils/constants";
 import { openModal } from "../../../features/modals/modal-silce";
 import { CustomTd } from "./styles";
+import { useDispatch } from "react-redux";
 
-export const CustomNameCell = ({ row, callback }) => {
+export const CustomNameCell = ({ row }) => {
+  const dispatch = useDispatch();
   const handleRowClick = () => {
-    callback(setSelectedRecipe(row.id));
-    callback(openModal(SHOW_RECIPE_MODAL));
+    dispatch(setSelectedRecipe(row.id));
+    dispatch(openModal(SHOW_RECIPE_MODAL));
   };
 
   return <CustomTd onClick={handleRowClick}>{row.name}</CustomTd>;

@@ -17,6 +17,7 @@ import "./App.css";
 import { AddRecipeSlide } from "./views/modals/add-recipe";
 import { ShowRecipeSlide } from "./views/modals/show-recipe";
 import { useDispatch, useSelector } from "react-redux";
+import { columns } from "./utils/constants/columns";
 
 function App() {
   const data = useSelector((state) => state.recipe.data);
@@ -26,25 +27,13 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const columns = [
-    {
-      field: "name",
-      header: "Recipe name",
-      // cellRendererFramework: (params) => (
-      //   <CustomNameCell row={params} callback={dispatch} />
-      // ),
-    },
-    { field: "reviews", header: "Reviews" },
-    { field: "cookedBefore", header: "Coocked before" },
-  ];
-
   useEffect(() => {
     if (data) {
       setFilteredData(data);
     }
   }, [data]);
 
-  //todo move to a custom hook if posible
+  //todo move to a custom hook if possible
   useEffect(() => {
     let filteredResults = data;
     filteredResults =

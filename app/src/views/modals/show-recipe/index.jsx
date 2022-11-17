@@ -13,7 +13,7 @@ import {
   EDIT_RECIPE_MODAL,
   COOKED_BEFORE,
 } from "../../../utils/constants";
-import { ToogleEditSlide } from "../../../components/buttons/toggle";
+import { ToggleEditSlide } from "../../../components/buttons/toggle";
 import { CustomReviewCell } from "../../../components/custom-cells/review";
 
 export const ShowRecipeSlide = () => {
@@ -32,14 +32,6 @@ export const ShowRecipeSlide = () => {
     () => data.find((recipe) => recipe.id === recipeId),
     [data, recipeId]
   );
-
-  const clearFields = () => {
-    setName("");
-    setIngredients("");
-    setPreparation("");
-    setReviews(1);
-    dispatch(setSelectedRecipe(null));
-  };
 
   const handleEditButton = () => {
     dispatch(openModal(EDIT_RECIPE_MODAL));
@@ -66,7 +58,7 @@ export const ShowRecipeSlide = () => {
         <SlideHeader title={name} />
         <p>Ingredients</p>
         {ingredients.length > 0 &&
-          ingredients?.map((element) => <li>{element}</li>)}
+          ingredients?.map((element, index) => <li key={index}>{element}</li>)}
         <p>Preparation</p>
         <p style={{ fontWeight: "400", fontSize: "14px" }}>{preparation}</p>
         <p>Reviews</p>
@@ -79,7 +71,7 @@ export const ShowRecipeSlide = () => {
           <CustomReviewCell row={recipe}></CustomReviewCell>
         </div>
         <p>{COOKED_BEFORE}</p>
-        <ToogleEditSlide row={recipe} callback={dispatch} />
+        <ToggleEditSlide row={recipe} />
         <FooterContainer>
           <SlideActionButton onClick={handleEditButton}>Edit</SlideActionButton>
         </FooterContainer>
