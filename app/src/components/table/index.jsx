@@ -1,4 +1,5 @@
 import { StyledTable, Container } from "./styles";
+import { cellRenderer } from "../../utils/helpers/table";
 
 export const Table = ({ data, columns }) => {
   return (
@@ -12,17 +13,9 @@ export const Table = ({ data, columns }) => {
         </thead>
         <tbody>
           {data
-            ? data.map((row, index) => (
-                <tr key={index}>
-                  {columns.map((col) => {
-                    return col.Cell ? (
-                      <col.Cell key={col.field} row={row} />
-                    ) : (
-                      <td>{row[col.field]}</td>
-                    );
-                  })}
-                </tr>
-              ))
+            ? data.map((row, index) => {
+                return cellRenderer(columns, row, index);
+              })
             : null}
         </tbody>
       </StyledTable>
