@@ -52,7 +52,11 @@ export const AddRecipeSlide = () => {
   const isEditModal = openModals.includes(EDIT_RECIPE_MODAL);
 
   const handleChange = (e, callback) => {
-    callback(e.target.value);
+    let value = e.target.value;
+    if (e.target.name === "reviews") {
+      value = Number(value);
+    }
+    callback(value);
   };
 
   const handleCancel = () => {
@@ -72,7 +76,7 @@ export const AddRecipeSlide = () => {
       name,
       preparation,
       ingredients: [ingredients],
-      reviews,
+      reviews: Number(reviews),
       cookedBefore,
     };
 
@@ -126,6 +130,7 @@ export const AddRecipeSlide = () => {
         <StyledSubtitle>{RECIPE_NAME_LABEL}</StyledSubtitle>
         <StyledTextArea
           small
+          name="title"
           onChange={(event) => handleChange(event, setName)}
           value={name}
           placeholder={TYPE_TITLE}
@@ -133,6 +138,7 @@ export const AddRecipeSlide = () => {
         <StyledSubtitle>{INGREDIENTS_LABEL}</StyledSubtitle>
         <input
           type="text"
+          name="ingredients"
           onChange={(event) => handleChange(event, setIngredients)}
           value={ingredients}
           placeholder={TYPE_INGREDIENT}
@@ -155,10 +161,10 @@ export const AddRecipeSlide = () => {
             <div key={index}>
               <input
                 type="radio"
-                name="review-group"
+                name="reviews"
                 key={option}
                 value={option}
-                checked={option == reviews}
+                checked={option === reviews}
                 onChange={(event) => handleChange(event, setReviews)}
               ></input>
               <label>{option}</label>

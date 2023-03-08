@@ -46,7 +46,7 @@ export const ShowRecipeSlide = () => {
       setName(recipe.name);
       setPreparation(recipe.preparation);
     }
-  }, [data, recipeId]);
+  }, [data, recipe, recipeId]);
 
   if (!openModals.includes(SHOW_RECIPE_MODAL)) {
     return null;

@@ -4,22 +4,23 @@ import { MAX_REVIEWS } from "../../../utils/constants";
 import { useMemo } from "react";
 
 export const CustomReviewCell = ({ row }) => {
-  const stars = useMemo(() => Array(row.reviews).fill("1"), [row]);
+  const stars = useMemo(() => Array(row.reviews).fill(true), [row.reviews]);
   const darkStars = useMemo(
-    () => Array(MAX_REVIEWS - stars.length).fill("1"),
-    [row]
+    () => Array(MAX_REVIEWS - stars.length).fill(true),
+    [stars.length]
   );
+
   return (
     <>
       {stars?.map((e, index) => (
         <span key={index}>
-          <img src={star} />
+          <img src={star} alt="" />
         </span>
       ))}
 
       {darkStars?.map((e, index) => (
         <span key={index}>
-          <img src={darkStar} />
+          <img src={darkStar} alt="" />
         </span>
       ))}
     </>
