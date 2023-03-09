@@ -12,4 +12,9 @@ export const StyledInput = styled.input`
   :focus {
     outline: none;
   }
+
+  @media screen and (max-width: 650px) {
+    width: auto;
+    margin-right: 0px;
+  }
 `;

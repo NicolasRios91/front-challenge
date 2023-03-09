@@ -12,4 +12,8 @@ export const Container = styled.div`
   img {
     width: 140px;
   }
+
+  @media screen and (max-width: 650px) {
+    justify-content: center;
+  }
 `;

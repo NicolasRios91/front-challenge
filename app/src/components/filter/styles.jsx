@@ -24,6 +24,10 @@ export const StyledSelect = styled.div`
   :hover {
     cursor: pointer;
   }
+
+  @media screen and (max-width: 650px) {
+    justify-content: space-between;
+  }
 `;
 
 export const Arrow = styled.div`

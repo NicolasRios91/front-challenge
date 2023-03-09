@@ -18,6 +18,7 @@ export const Container = styled.div`
   height: 100%;
   right: 0;
   background-color: white;
+  overflow: auto;
 
   p {
     font-weight: ${(props) => props.theme.weight[600]};
@@ -40,6 +41,14 @@ export const Container = styled.div`
     :focus {
       outline: none;
     }
+  }
+
+  input {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 650px) {
+    width: 100%;
   }
 `;
 

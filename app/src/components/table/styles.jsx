@@ -25,10 +25,25 @@ export const StyledTable = styled.table`
     border-bottom: 1px solid ${(props) => props.theme.color.gray[400]};
     font-weight: ${(props) => props.theme.weight[400]};
   }
+
+  @media screen and (max-width: 650px) {
+    tbody td {
+      padding: 10px 0px;
+    }
+    thead tr {
+      th:first-child {
+        width: 40%;
+      }
+    }
+  }
 `;
 
 export const Container = styled.div`
   margin-top: ${(props) => props.theme.space.s};
   height: 65vh;
   overflow: auto;
+
+  @media screen and (max-width: 650px) {
+    height: 100%;
+  }
 `;

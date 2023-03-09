@@ -67,7 +67,7 @@ function App() {
           }}
         >
           <Title text={KITCHEN_RECIPES} />
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div className="search">
             <Search callback={setSearch} />
             <Filter callback={setStatus} />
           </div>
