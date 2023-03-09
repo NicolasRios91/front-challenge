@@ -1,12 +1,8 @@
 import { Container } from "./styles";
-import logo from "../../assets/logo.png";
-import brand from "../../assets/brand.png";
+import recipe from "../../assets/recipe.png";
 
 export const Header = () => (
   <Container>
-    <div>
-      <img src={logo} alt=""></img>
-      <img src={brand} alt="tinkin"></img>
-    </div>
+    <img src={recipe} alt=""></img>
   </Container>
 );

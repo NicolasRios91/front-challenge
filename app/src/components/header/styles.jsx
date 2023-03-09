@@ -9,8 +9,7 @@ export const Container = styled.div`
   padding: ${(props) => props.theme.space.s};
   padding-left: ${(props) => props.theme.space.xl};
 
-  > div {
-    display: flex;
-    align-items: center;
+  img {
+    width: 140px;
   }
 `;
