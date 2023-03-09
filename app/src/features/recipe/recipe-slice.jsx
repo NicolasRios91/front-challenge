@@ -9,12 +9,12 @@ export const recipeSlice = createSlice({
       state.data.push(action.payload);
     },
     editRecipe: (state, action) => {
-      const { id, preparation, name, reviews, ingredients, cookedBefore } =
+      const { id, preparation, title, reviews, ingredients, cookedBefore } =
         action.payload;
       const foundRecipe = state.data.find((recipe) => recipe.id === id);
       if (foundRecipe) {
         foundRecipe.preparation = preparation;
-        foundRecipe.name = name;
+        foundRecipe.title = title;
         foundRecipe.reviews = reviews;
         foundRecipe.ingredients = ingredients;
         foundRecipe.cookedBefore = cookedBefore;

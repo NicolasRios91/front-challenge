@@ -6,7 +6,6 @@ import {
   StyledTextArea,
   SlideActionButton,
   FooterContainer,
-  StyledSubtitle,
 } from "../../../components/common/styles";
 import { SlideHeader } from "../../../components/slide-header";
 import {
@@ -35,14 +34,21 @@ import {
   REVIEWS_LABEL,
 } from "../../../utils/constants";
 import { v4 as uuid } from "uuid";
-import { ToggleAddSlide } from "../../../components/buttons/toggle";
+import { ToggleSwitch } from "../../../components/buttons/toggle";
+import "../../../components/buttons/toggle/ToggleSwitch.css";
+
+const reviewOptions = [1, 2, 3, 4, 5];
+
+const initialize = {
+  title: "",
+  ingredients: [],
+  preparation: "",
+  reviews: 1,
+  cookedBefore: true,
+};
 
 export const AddRecipeSlide = () => {
-  const [ingredients, setIngredients] = useState("");
-  const [preparation, setPreparation] = useState([]);
-  const [name, setName] = useState("");
-  const [reviews, setReviews] = useState(1);
-  const [cookedBefore, setCookedBefore] = useState(true);
+  const [formData, setFormData] = useState(initialize);
 
   const data = useSelector((state) => state.recipe.data);
   const recipeId = useSelector((state) => state.recipe.selectedRecipeId);
@@ -51,12 +57,18 @@ export const AddRecipeSlide = () => {
   const openModals = useSelector((state) => state.modal.open);
   const isEditModal = openModals.includes(EDIT_RECIPE_MODAL);
 
-  const handleChange = (e, callback) => {
-    let value = e.target.value;
-    if (e.target.name === "reviews") {
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    if (name === "reviews") {
       value = Number(value);
     }
-    callback(value);
+    if (name === "ingredients") {
+      value = [value];
+    }
+    if (name === "cookedBefore") {
+      value = e.target.checked;
+    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleCancel = () => {
@@ -65,24 +77,13 @@ export const AddRecipeSlide = () => {
   };
 
   const clearFields = () => {
-    setName("");
-    setIngredients("");
-    setPreparation("");
-    setReviews(1);
+    setFormData(initialize);
   };
 
-  const handleCreateRecipe = () => {
-    const newRecipe = {
-      name,
-      preparation,
-      ingredients: [ingredients],
-      reviews: Number(reviews),
-      cookedBefore,
-    };
-
+  const handleFormRecipe = () => {
     recipeId
-      ? dispatch(editRecipe({ id: recipeId, ...newRecipe }))
-      : dispatch(addRecipe({ id: uuid(), ...newRecipe }));
+      ? dispatch(editRecipe({ id: recipeId, ...formData }))
+      : dispatch(addRecipe({ id: uuid(), ...formData }));
     //todo add modal for success
     dispatch(closeAllModals());
     dispatch(setSelectedRecipe(null));
@@ -91,22 +92,16 @@ export const AddRecipeSlide = () => {
 
   const isDisabled = useMemo(
     () =>
-      ingredients?.length === 0 ||
-      preparation?.length === 0 ||
-      name?.length === 0,
-    [ingredients, preparation, name]
+      formData.ingredients?.length === 0 ||
+      formData.preparation?.length === 0 ||
+      formData.name?.length === 0,
+    [formData.ingredients, formData.preparation, formData.name]
   );
-
-  const reviewOptions = [1, 2, 3, 4, 5];
 
   useEffect(() => {
     if (isEditModal) {
       const recipe = data.find((recipe) => recipe.id === recipeId);
-      setIngredients(recipe?.ingredients);
-      setCookedBefore(recipe?.cookedBefore);
-      setReviews(recipe?.reviews);
-      setName(recipe?.name);
-      setPreparation(recipe?.preparation);
+      setFormData(recipe);
     } else {
       clearFields();
     }
@@ -127,75 +122,79 @@ export const AddRecipeSlide = () => {
           title={isEditModal ? EDIT_RECIPE_LABEL : NEW_RECIPE}
           callback={clearFields}
         />
-        <StyledSubtitle>{RECIPE_NAME_LABEL}</StyledSubtitle>
-        <StyledTextArea
-          small
-          name="title"
-          onChange={(event) => handleChange(event, setName)}
-          value={name}
-          placeholder={TYPE_TITLE}
-        />
-        <StyledSubtitle>{INGREDIENTS_LABEL}</StyledSubtitle>
-        <input
-          type="text"
-          name="ingredients"
-          onChange={(event) => handleChange(event, setIngredients)}
-          value={ingredients}
-          placeholder={TYPE_INGREDIENT}
-        ></input>
-        <StyledSubtitle>{PREPARATION_LABEL}</StyledSubtitle>
-        <StyledTextArea
-          onChange={(event) => handleChange(event, setPreparation)}
-          value={preparation}
-          placeholder={TYPE_STEPS}
-        />
-        <StyledSubtitle>{REVIEWS_LABEL}</StyledSubtitle>
-        <div
-          style={{
-            display: "flex",
-            width: "60%",
-            justifyContent: "space-between",
-          }}
-        >
-          {reviewOptions.map((option, index) => (
-            <div key={index}>
-              <input
-                type="radio"
-                name="reviews"
-                key={option}
-                value={option}
-                checked={option === reviews}
-                onChange={(event) => handleChange(event, setReviews)}
-              ></input>
-              <label>{option}</label>
-            </div>
-          ))}
-        </div>
-        <StyledSubtitle>{COOKED_BEFORE}</StyledSubtitle>
-        <ToggleAddSlide value={cookedBefore} callback={setCookedBefore} />
-        <FooterContainer>
-          {isEditModal ? (
-            <>
-              {" "}
+        <form onSubmit={handleFormRecipe}>
+          <label htmlFor="title">{RECIPE_NAME_LABEL}</label>
+          <StyledTextArea
+            small
+            id="title"
+            name="title"
+            onChange={handleChange}
+            value={formData.title}
+            placeholder={TYPE_TITLE}
+          />
+          <div>
+            <label>{INGREDIENTS_LABEL}</label>
+            <input
+              type="text"
+              name="ingredients"
+              onChange={handleChange}
+              value={formData.ingredients}
+              placeholder={TYPE_INGREDIENT}
+            ></input>
+          </div>
+          <label>{PREPARATION_LABEL}</label>
+          <StyledTextArea
+            name="preparation"
+            onChange={handleChange}
+            value={formData.preparation}
+            placeholder={TYPE_STEPS}
+          />
+          <label>{REVIEWS_LABEL}</label>
+          <div
+            style={{
+              display: "flex",
+              width: "60%",
+              justifyContent: "space-between",
+            }}
+          >
+            {reviewOptions.map((option, index) => (
+              <div key={index}>
+                <input
+                  type="radio"
+                  name="reviews"
+                  key={option}
+                  value={option}
+                  checked={option === formData.reviews}
+                  onChange={handleChange}
+                ></input>
+                <label>{option}</label>
+              </div>
+            ))}
+          </div>
+          <label>{COOKED_BEFORE}</label>
+          <ToggleSwitch onChange={handleChange} value={formData.cookedBefore} />
+          {/* <label htmlFor="reviews" className="switch">
+          <input
+            id="cookedBefore"
+            type="checkbox"
+            name="cookedBefore"
+            checked={formData.cookedBefore}
+            value={formData.cookedBefore}
+            onChange={handleChange}
+          />
+          <span className="slider round"></span>
+          </label> */}
+          <FooterContainer>
+            {isEditModal && (
               <SlideActionButton secondary onClick={handleCancel}>
                 Cancel
               </SlideActionButton>
-              <SlideActionButton
-                disabled={isDisabled}
-                onClick={handleCreateRecipe}
-              >
-                Update
-              </SlideActionButton>
-            </>
-          ) : (
-            <SlideActionButton
-              onClick={handleCreateRecipe}
-              disabled={isDisabled}
-            >
-              Create
+            )}
+            <SlideActionButton disabled={isDisabled} type="submit">
+              {isEditModal ? "Update" : "Create"}
             </SlideActionButton>
-          )}
-        </FooterContainer>
+          </FooterContainer>
+        </form>
       </Container>
     </ModalContainer>
   );

@@ -32,7 +32,7 @@ export const MAX_REVIEWS = 5;
 export const RECIPES = [
   {
     id: "1",
-    name: "recipe test 1",
+    title: "recipe test 1",
     reviews: 2,
     ingredients: ["salt", "pepper", "meat"],
     cookedBefore: true,

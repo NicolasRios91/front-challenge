@@ -5,7 +5,7 @@ import { StyledButton } from "./styles";
 export const StatusButton = ({ row, callback }) => {
   const { id, reviews, ingredients, cookedBefore, preparation, name } = row;
 
-  const isActive = useMemo(() => cookedBefore, [row]);
+  const isActive = useMemo(() => cookedBefore, [cookedBefore]);
 
   const handleClick = () => {
     const status = !isActive;

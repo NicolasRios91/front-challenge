@@ -4,7 +4,7 @@ import { ToggleEditSlide } from "../../../components/buttons/toggle";
 
 export const columns = [
   {
-    field: "name",
+    field: "title",
     header: "Recipe name",
     Cell: ({ row }) => {
       return <CustomNameCell row={row} />;

@@ -22,12 +22,6 @@ export const ShowRecipeSlide = () => {
   const data = useSelector((state) => state.recipe.data);
   const recipeId = useSelector((state) => state.recipe.selectedRecipeId);
 
-  const [ingredients, setIngredients] = useState([]);
-  const [preparation, setPreparation] = useState("");
-  const [name, setName] = useState("");
-  const [reviews, setReviews] = useState(1);
-  const [cookedBefore, setCookedBefore] = useState(true);
-
   const recipe = useMemo(
     () => data.find((recipe) => recipe.id === recipeId),
     [data, recipeId]
@@ -38,16 +32,6 @@ export const ShowRecipeSlide = () => {
     dispatch(closeModal(SHOW_RECIPE_MODAL));
   };
 
-  useEffect(() => {
-    if (recipe) {
-      setIngredients(recipe.ingredients);
-      setCookedBefore(recipe.cookedBefore);
-      setReviews(recipe.reviews);
-      setName(recipe.name);
-      setPreparation(recipe.preparation);
-    }
-  }, [data, recipe, recipeId]);
-
   if (!openModals.includes(SHOW_RECIPE_MODAL)) {
     return null;
   }
@@ -55,12 +39,16 @@ export const ShowRecipeSlide = () => {
   return (
     <ModalContainer>
       <Container>
-        <SlideHeader title={name} />
+        <SlideHeader title={recipe.title} />
         <p>Ingredients</p>
-        {ingredients.length > 0 &&
-          ingredients?.map((element, index) => <li key={index}>{element}</li>)}
+        {recipe?.ingredients?.length > 0 &&
+          recipe?.ingredients?.map((element, index) => (
+            <li key={index}>{element}</li>
+          ))}
         <p>Preparation</p>
-        <p style={{ fontWeight: "400", fontSize: "14px" }}>{preparation}</p>
+        <p style={{ fontWeight: "400", fontSize: "14px" }}>
+          {recipe.preparation}
+        </p>
         <p>Reviews</p>
         <div
           style={{

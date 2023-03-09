@@ -24,6 +24,11 @@ export const Container = styled.div`
     margin-bottom: ${(props) => props.theme.space.m};
   }
 
+  label {
+    font-size: ${(props) => props.theme.size.s};
+    font-weight: ${(props) => props.theme.weight[600]};
+  }
+
   textarea,
   input {
     box-sizing: border-box;
@@ -75,9 +80,4 @@ export const FooterContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: ${(props) => props.theme.space.xl};
-`;
-
-export const StyledSubtitle = styled.p`
-  font-size: ${(props) => props.theme.size.s};
-  font-weight: ${(props) => props.theme.weight[600]};
 `;

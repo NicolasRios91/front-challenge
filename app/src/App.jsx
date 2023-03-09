@@ -37,7 +37,8 @@ function App() {
   useEffect(() => {
     let filteredResults = data;
     filteredResults =
-      search !== " " && data.filter((recipe) => recipe.name.includes(search));
+      search !== " " &&
+      data.filter((recipe) => recipe?.title?.includes(search));
 
     if (status !== ALL_VALUE) {
       filteredResults = filteredResults.filter((recipe) => {

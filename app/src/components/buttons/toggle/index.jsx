@@ -1,35 +1,30 @@
 import "./ToggleSwitch.css";
-import { useMemo } from "react";
 import { editRecipe } from "../../../features/recipe/recipe-slice";
 import { useDispatch } from "react-redux";
 
-export const ToggleSwitch = ({ value, callback }) => {
+//component
+export const ToggleSwitch = ({ value, onChange }) => {
   return (
     <label className="switch">
-      <input type="checkbox" checked={value} onChange={callback} />
-      <span className="slider round"></span>
+      <input
+        type="checkbox"
+        name="cookedBefore"
+        checked={value}
+        onChange={onChange}
+      />
+      <span className="slider round" />
     </label>
   );
 };
 
-//for add new recipe
-export const ToggleAddSlide = ({ value, callback }) => {
-  const handleOnChange = () => {
-    callback(!value);
-  };
-
-  return <ToggleSwitch value={value} callback={handleOnChange} />;
-};
-
 //for editing field on table and show slide
 export const ToggleEditSlide = ({ row }) => {
-  const { id, reviews, ingredients, cookedBefore, preparation, name } = row;
+  const { id, reviews, ingredients, cookedBefore, preparation, title } = row;
 
   const dispatch = useDispatch();
-  const isActive = useMemo(() => cookedBefore, [row]);
 
   const handleOnChange = () => {
-    const status = !isActive;
+    const status = !cookedBefore;
     dispatch(
       editRecipe({
         id,
@@ -37,10 +32,10 @@ export const ToggleEditSlide = ({ row }) => {
         ingredients,
         cookedBefore: status,
         preparation,
-        name,
+        title,
       })
     );
   };
 
-  return <ToggleSwitch value={isActive} callback={handleOnChange} />;
+  return <ToggleSwitch value={cookedBefore} onChange={handleOnChange} />;
 };

@@ -11,5 +11,5 @@ export const CustomNameCell = ({ row }) => {
     dispatch(openModal(SHOW_RECIPE_MODAL));
   };
 
-  return <CustomTd onClick={handleRowClick}>{row.name}</CustomTd>;
+  return <CustomTd onClick={handleRowClick}>{row.title}</CustomTd>;
 };
