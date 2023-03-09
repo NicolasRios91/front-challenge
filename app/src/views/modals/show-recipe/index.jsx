@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ModalContainer,
@@ -7,7 +7,7 @@ import {
   FooterContainer,
 } from "../../../components/common/styles";
 import { SlideHeader } from "../../../components/slide-header";
-import { closeModal, openModal } from "../../../features/modals/modal-silce";
+import { closeModal, openModal } from "../../../features/modals/modal-slice";
 import {
   SHOW_RECIPE_MODAL,
   EDIT_RECIPE_MODAL,

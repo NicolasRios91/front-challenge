@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { PlusSign, StyledButton } from "./styles";
-import { openModal } from "../../../features/modals/modal-silce";
+import { openModal } from "../../../features/modals/modal-slice";
 import { ADD_RECIPE_MODAL } from "../../../utils/constants";
 
 export const AddButton = () => {

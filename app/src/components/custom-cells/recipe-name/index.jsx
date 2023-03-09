@@ -1,6 +1,6 @@
 import { setSelectedRecipe } from "../../../features/recipe/recipe-slice";
 import { SHOW_RECIPE_MODAL } from "../../../utils/constants";
-import { openModal } from "../../../features/modals/modal-silce";
+import { openModal } from "../../../features/modals/modal-slice";
 import { CustomTd } from "./styles";
 import { useDispatch } from "react-redux";
 
