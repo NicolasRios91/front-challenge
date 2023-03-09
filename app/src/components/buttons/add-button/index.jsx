@@ -10,7 +10,7 @@ export const AddButton = () => {
   };
 
   return (
-    <StyledButton onClick={handleOnClick}>
+    <StyledButton onClick={handleOnClick} aria-label="add recipe">
       <PlusSign />
     </StyledButton>
   );

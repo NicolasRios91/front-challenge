@@ -37,8 +37,9 @@ export const Filter = ({ callback }) => {
           <div>
             {FILTER_OPTIONS.map((option) => (
               <OptionsModal key={option.value}>
-                <label>{option.label}</label>
+                <label htmlFor="filter-recipe">{option.label}</label>
                 <input
+                  id="filter-recipe"
                   type="radio"
                   name="filter-recipe"
                   key={option.value}

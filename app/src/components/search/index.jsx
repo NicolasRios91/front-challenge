@@ -9,10 +9,17 @@ export const Search = ({ callback }) => {
   };
 
   return (
-    <StyledInput
-      type="text"
-      placeholder={SEARCH_PLACEHOLDER}
-      onChange={handleOnChange}
-    />
+    <>
+      <label htmlFor="search" style={{ display: "none" }}>
+        Search
+      </label>
+
+      <StyledInput
+        id="search"
+        type="text"
+        placeholder={SEARCH_PLACEHOLDER}
+        onChange={handleOnChange}
+      />
+    </>
   );
 };

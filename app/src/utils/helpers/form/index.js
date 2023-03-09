@@ -3,8 +3,16 @@ export const getFormValues = (event) => {
   if (name === "reviews") {
     value = Number(value);
   }
-  if (name === "ingredients") {
-    value = [value];
+  if (name.includes("ingredients")) {
+    name = "ingredients";
+
+    const ingredients = document.getElementsByName("ingredients");
+    value = [];
+    if (ingredients) {
+      ingredients?.forEach((element) => {
+        value.push(element.value);
+      });
+    }
   }
   if (name === "cookedBefore") {
     value = event.target.checked;

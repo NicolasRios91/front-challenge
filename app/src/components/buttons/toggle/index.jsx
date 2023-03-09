@@ -2,7 +2,6 @@ import "./ToggleSwitch.css";
 import { editRecipe } from "../../../features/recipe/recipe-slice";
 import { useDispatch } from "react-redux";
 
-//component
 export const ToggleSwitch = ({ value, onChange }) => {
   return (
     <label className="switch">
@@ -11,6 +10,7 @@ export const ToggleSwitch = ({ value, onChange }) => {
         name="cookedBefore"
         checked={value}
         onChange={onChange}
+        aria-label="set cooked before"
       />
       <span className="slider round" />
     </label>

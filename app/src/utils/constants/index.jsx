@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
 export const KITCHEN_RECIPES = "Kitchen Recipes";
 export const COOKED_BEFORE = "Cooked before";
 export const SEARCH_PLACEHOLDER = "Search";
@@ -32,7 +30,7 @@ export const MAX_REVIEWS = 5;
 export const RECIPES = [
   {
     id: "1",
-    title: "recipe test 1",
+    title: "Blueberry and chia pancakes",
     reviews: 2,
     ingredients: ["salt", "pepper", "meat"],
     cookedBefore: true,

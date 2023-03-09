@@ -6,9 +6,9 @@ const theme = {
       200: "#F9F9F9",
       400: "#EBF0F3",
       600: "#B1C4D1",
-      800: "#79797A",
+      800: "#646467",
     },
-    darkGreen: "#0C969D",
+    darkGreen: "#0A747A",
     lightBlue: "#54B5BA",
   },
   size: {

@@ -27,6 +27,8 @@ export const Container = styled.div`
   label {
     font-size: ${(props) => props.theme.size.s};
     font-weight: ${(props) => props.theme.weight[600]};
+    display: block;
+    margin-bottom: 10px;
   }
 
   textarea,
@@ -38,6 +40,26 @@ export const Container = styled.div`
     :focus {
       outline: none;
     }
+  }
+`;
+
+export const FieldsContainer = styled.div`
+  box-sizing: border-box;
+  padding: 10px 0px;
+`;
+
+export const IngredientsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  button {
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
   }
 `;
 
