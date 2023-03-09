@@ -23,7 +23,7 @@ const initialize = {
 };
 
 export const useForm = (isEditModal) => {
-  const [formData, setFormData] = useState(initialize);
+  const [formData, setFormData] = useState(() => initialize);
   const data = useSelector((state) => state.recipe.data);
   const recipeId = useSelector((state) => state.recipe.selectedRecipeId);
 
@@ -35,15 +35,15 @@ export const useForm = (isEditModal) => {
   };
 
   const handleAddIngredientField = () => {
-    let ingredients = formData.ingredients;
+    let ingredients = [...formData.ingredients];
     ingredients.push("");
     setFormData({ ...formData, ingredients });
   };
 
   const handleRemoveIngredient = (ingredient) => {
-    let ingredients = formData.ingredients;
-    const index = ingredients.indexOf(ingredient);
-    ingredients.splice(index, 1);
+    let ingredients = [...formData.ingredients];
+    const index = ingredients?.indexOf(ingredient);
+    ingredients?.splice(index, 1);
     setFormData({ ...formData, ingredients });
   };
 
@@ -76,7 +76,7 @@ export const useForm = (isEditModal) => {
       const recipe = data.find((recipe) => recipe.id === recipeId);
       setFormData(recipe);
     }
-    //  else {
+    // else {
     //   setFormData(initialize);
     // }
   }, [data, recipeId, isEditModal]);
