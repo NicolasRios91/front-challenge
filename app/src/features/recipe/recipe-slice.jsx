@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RECIPES } from "../../utils/constants";
 
 export const recipeSlice = createSlice({
   name: "recipes",
-  initialState: { data: RECIPES, selectedRecipeId: null },
+  initialState: {
+    data: JSON.parse(localStorage.getItem("recipes")) || [],
+    selectedRecipeId: null,
+  },
   reducers: {
+    setRecipes: (state, action) => {
+      state.data = action.payload;
+    },
     addRecipe: (state, action) => {
       state.data.push(action.payload);
     },
@@ -26,5 +31,6 @@ export const recipeSlice = createSlice({
   },
 });
 
-export const { addRecipe, editRecipe, setSelectedRecipe } = recipeSlice.actions;
+export const { addRecipe, editRecipe, setRecipes, setSelectedRecipe } =
+  recipeSlice.actions;
 export default recipeSlice.reducer;

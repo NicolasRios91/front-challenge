@@ -23,7 +23,7 @@ export const ShowRecipeSlide = () => {
   const recipeId = useSelector((state) => state.recipe.selectedRecipeId);
 
   const recipe = useMemo(
-    () => data.find((recipe) => recipe.id === recipeId),
+    () => data?.find((recipe) => recipe.id === recipeId),
     [data, recipeId]
   );
 

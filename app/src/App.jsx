@@ -24,8 +24,13 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState(ALL_VALUE);
+  console.log(data);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    localStorage.setItem("recipes", JSON.stringify(data));
+  }, [data]);
 
   useEffect(() => {
     if (data) {
@@ -38,7 +43,7 @@ function App() {
     let filteredResults = data;
     filteredResults =
       search !== " " &&
-      data.filter((recipe) => recipe?.title?.includes(search));
+      data?.filter((recipe) => recipe?.title?.includes(search));
 
     if (status !== ALL_VALUE) {
       filteredResults = filteredResults.filter((recipe) => {

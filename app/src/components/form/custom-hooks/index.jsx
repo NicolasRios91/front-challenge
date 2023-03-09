@@ -41,6 +41,7 @@ export const useForm = (isEditModal) => {
   };
 
   const handleRemoveIngredient = (ingredient) => {
+    //try structuredClone
     let ingredients = [...formData.ingredients];
     const index = ingredients?.indexOf(ingredient);
     ingredients?.splice(index, 1);
@@ -73,7 +74,7 @@ export const useForm = (isEditModal) => {
 
   useEffect(() => {
     if (isEditModal) {
-      const recipe = data.find((recipe) => recipe.id === recipeId);
+      const recipe = data?.find((recipe) => recipe.id === recipeId);
       setFormData(recipe);
     }
     // else {
