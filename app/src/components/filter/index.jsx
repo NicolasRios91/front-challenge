@@ -1,36 +1,25 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { StyledSelect, OptionsModal, DropDownContainer, Arrow } from "./styles";
 import { COOKED_BEFORE, FILTER_OPTIONS } from "../../utils/constants";
 import useOutsideClick from "../../utils/helpers/use-outside-click";
 
-//todo add reducer
-export const Filter = ({ callback }) => {
-  const [selectedOption, setSelectedOption] = useState(FILTER_OPTIONS[0].label);
-  const [isOpen, setIsOpen] = useState(false);
+export const Filter = ({ props }) => {
   const ref = useRef();
 
-  const handleOnChange = (e) => {
-    const newValue = FILTER_OPTIONS.find(
-      (option) => option.value === e.target.value
-    );
-    if (newValue) {
-      setSelectedOption(newValue.label);
-      callback(newValue.value);
-    }
-  };
+  const {
+    isOpen,
+    handleOnChange,
+    handleOpenDropDown,
+    handleCloseDropDown,
+    label,
+  } = props;
 
-  const handleOpenModal = () => {
-    setIsOpen(!isOpen);
-  };
-
-  useOutsideClick(ref, () => {
-    setIsOpen(false);
-  });
+  useOutsideClick(ref, handleCloseDropDown);
 
   return (
     <div ref={ref} style={{ width: "auto" }}>
-      <StyledSelect onClick={handleOpenModal}>
-        {COOKED_BEFORE}:<span>{selectedOption}</span> <Arrow />
+      <StyledSelect onClick={handleOpenDropDown}>
+        {COOKED_BEFORE}:<span>{label}</span> <Arrow />
       </StyledSelect>
       {FILTER_OPTIONS.length > 0 && isOpen ? (
         <DropDownContainer>
@@ -44,7 +33,7 @@ export const Filter = ({ callback }) => {
                   name="filter-recipe"
                   key={option.value}
                   value={option.value}
-                  checked={selectedOption === option.label}
+                  checked={label === option.label}
                   onChange={handleOnChange}
                 ></input>
               </OptionsModal>
