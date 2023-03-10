@@ -7,15 +7,15 @@ export const recipeSlice = createSlice({
     selectedRecipeId: null,
   },
   reducers: {
-    setRecipes: (state, action) => {
-      state.data = action.payload;
+    setRecipes: (state, { payload }) => {
+      state.data = payload;
     },
-    addRecipe: (state, action) => {
-      state.data.push(action.payload);
+    addRecipe: (state, { payload }) => {
+      state.data.push(payload);
     },
-    editRecipe: (state, action) => {
+    editRecipe: (state, { payload }) => {
       const { id, preparation, title, reviews, ingredients, cookedBefore } =
-        action.payload;
+        payload;
       const foundRecipe = state.data.find((recipe) => recipe.id === id);
       if (foundRecipe) {
         foundRecipe.preparation = preparation;
@@ -25,12 +25,13 @@ export const recipeSlice = createSlice({
         foundRecipe.cookedBefore = cookedBefore;
       }
     },
-    setSelectedRecipe: (state, action) => {
-      state.selectedRecipeId = action.payload;
+    setSelectedRecipe: (state, { payload }) => {
+      state.selectedRecipeId = payload;
     },
   },
 });
 
 export const { addRecipe, editRecipe, setRecipes, setSelectedRecipe } =
   recipeSlice.actions;
+
 export default recipeSlice.reducer;

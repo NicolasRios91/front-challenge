@@ -18,7 +18,7 @@ import { CustomReviewCell } from "../../../components/custom-cells/review";
 
 export const ShowRecipeSlide = () => {
   const dispatch = useDispatch();
-  const openModals = useSelector((state) => state.modal.open);
+  const openModals = useSelector((state) => state.modal);
   const data = useSelector((state) => state.recipe.data);
   const recipeId = useSelector((state) => state.recipe.selectedRecipeId);
 

@@ -2,22 +2,21 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const modalSlidersSlice = createSlice({
   name: "modalSliders",
-  initialState: {
-    open: [],
-  },
+  initialState: [],
   reducers: {
-    closeModal: (state, action) => {
-      state.open.splice(state.open.indexOf(action.payload), 1);
+    closeModal: (state, { payload }) => {
+      state.splice(state.indexOf(payload), 1);
     },
-    openModal: (state, action) => {
-      state.open.push(action.payload);
+    openModal: (state, { payload }) => {
+      state.push(payload);
     },
     closeAllModals: (state) => {
-      state.open = [];
+      state.splice(0, state.length);
     },
   },
 });
 
 export const { closeModal, openModal, closeAllModals } =
   modalSlidersSlice.actions;
+
 export default modalSlidersSlice.reducer;

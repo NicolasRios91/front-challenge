@@ -13,7 +13,7 @@ import "../../../components/buttons/toggle/ToggleSwitch.css";
 import { Form } from "../../../components/form";
 
 export const AddRecipeSlide = () => {
-  const openModals = useSelector((state) => state.modal.open);
+  const openModals = useSelector((state) => state.modal);
   const isEditModal = openModals.includes(EDIT_RECIPE_MODAL);
 
   if (
